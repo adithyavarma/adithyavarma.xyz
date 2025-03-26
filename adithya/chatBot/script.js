@@ -1,15 +1,18 @@
+const API_KEY = "AIzaSyCNze-P3HZUZCwYhxuKDQUSXoNin3VE8as"; // Make sure the API key is correct!
+
 async function sendMessage() {
     const userInput = document.getElementById("user-input").value;
     const chatBox = document.getElementById("chat-box");
 
     if (userInput.trim() === "") return;
 
+    // Display the user message
     chatBox.innerHTML += `<div><strong>You:</strong> ${userInput}</div>`;
     document.getElementById("user-input").value = "";
 
     try {
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_GEMINI_API_KEY`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -20,7 +23,6 @@ async function sendMessage() {
         );
 
         const data = await response.json();
-        console.log("API Response:", data);
 
         if (data.error) {
             console.error("API Error:", data.error.message);
