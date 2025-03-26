@@ -55,8 +55,8 @@ function formatBotResponse(response) {
     if (formattedResponse.includes("1.") || formattedResponse.includes("2.")) {
         formattedResponse = formattedResponse
             .replace(/(\d+\.)/g, '<br><br><strong>$1</strong>') // Add line breaks and bold section titles
-            .replace(/\*/g, '<ul><li>') // Add unordered list for bullet points
-            .replace(/\n/g, '</li><li>') // Ensure each new line is a list item
+            .replace(/\*/g, '<ul><ul>') // Add unordered list for bullet points
+            .replace(/\n/g, '<br></ul><ul>') // Ensure each new line is a list item
             + '</ul>';
     }
 
