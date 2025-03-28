@@ -94,7 +94,9 @@ html,body{
   opacity: 0;
 }
 
-.fix{position: relative;clear: both;}
+.fix{position: relative;clear: both;}\
+
+
 /*=============Style css=========*/
 
 /*-------------------------------------
@@ -468,12 +470,12 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 .main-timeline:before{
     content: "";
     width: 2px;
-    height: 84%;
+    height: 87%;
     background: #b2c1ce;
     position: absolute;
-    top: 1.5%;
+    top: 1%;
     left: 45.8%;
-    z-index: -1;
+    z-index: 1;
 }
 .main-timeline .timeline{
     position: relative;
