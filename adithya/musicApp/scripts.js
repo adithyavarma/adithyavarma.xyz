@@ -1,4 +1,4 @@
-const apiUrl = 'https://your-api-url.com'; // Replace with your Render API URL
+const apiUrl = 'https://adithyavarma-xyz.onrender.com'; // Replace with your Render API URL
 
 async function createPlaylist() {
     const name = document.getElementById('playlist-name').value;
