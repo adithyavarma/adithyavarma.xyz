@@ -18,12 +18,12 @@ const pool = new Pool({
 
 // 📌 Route to create a reservation
 app.post("/reserve", async (req, res) => {
-    const { name, phone, dateOfReservation, numberOfPeople } = req.body;
+    const { name, phone, dateOfReservation, numberOfPeople, reservedBy } = req.body;
 
     try {
         const result = await pool.query(
-            "INSERT INTO reservations (name, phone, date_of_reservation, number_of_people) VALUES ($1, $2, $3, $4) RETURNING *",
-            [name, phone, dateOfReservation, numberOfPeople]
+            "INSERT INTO reservations (name, phone, date_of_reservation, number_of_people, reservedBy) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+            [name, phone, dateOfReservation, numberOfPeople, reservedBy]
         );
         res.status(201).json({ message: "Reservation created!", data: result.rows[0] });
     } catch (error) {
