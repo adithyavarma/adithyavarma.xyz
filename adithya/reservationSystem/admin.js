@@ -1,4 +1,4 @@
-const apiUrl = "https://your-render-app-url.onrender.com";
+const apiUrl = "https://adithyavarma-xyz.onrender.com/";
 
 async function fetchReservations() {
     const response = await fetch(`${apiUrl}/reservations`);
