@@ -27,10 +27,49 @@ body {
 }
 
 .header {
-    background-color: #4CAF50;
+    background-color: #4CAF50;/*4CAF50*/
     color: white;
     text-align: center;
     padding: 20px;
+}
+.header h1{
+    font-size: 24px;
+}
+
+.header h5{
+    font-size: 10px;
+}
+
+.a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+.a:hover {
+    color: blue;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,td{
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+th{
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
 }
 
 .form-container {
@@ -150,5 +189,11 @@ div.user-message {
     }
     .chat-box {
         max-height: 60%;
+    }
+    table{
+        font-size: 12px;
+    }
+    th,td{
+        padding: 8px;
     }
 }

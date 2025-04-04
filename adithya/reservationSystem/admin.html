@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Reservation List</h2>
-<table id="reservations-table" border="1">
-    <tr>
-        <th>Customer Name</th>
-        <th>Customer Phone Number</th>
-        <th>Date of Reservation</th>
-        <th>Number of Guests</th>
-        <th>Reserved By</th>
-        <th>Reservation Status</th>
-        <th>Update</th>
-    </tr>
-</table>
-<!--<h2>Add New Reservation</h2>-->
-<!--<form id="add-reservation-form">-->
-<!--    <input type="text" id="name" placeholder="Name" required><br>-->
-<!--    <input type="text" id="phone" placeholder="Phone" required><br>-->
-<!--    <input type="date" id="date" required><br>-->
-<!--    <input type="number" id="guests" placeholder="Guests" min="1" required><br>-->
-<!--    <input type="text" id="reservedBy" placeholder="Reserved By (Receptionist)" required><br>-->
-<!--    <button type="submit">Add Reservation</button>-->
-<!--</form>-->
+    <div class="container">
+        <header class="header">
+            <h1>RESTAURANT RESERVATION LIST</h1>
+            <h5><a class="a" href="./index.html">CUSTOMER VIEW</a><a class="a" href="#">ADMIN VIEW</a></h5>
+        </header>
+        <table id="reservations-table" border="1">
+            <tr>
+                <th>Customer Name</th>
+                <th>Customer Phone Number</th>
+                <th>Date of Reservation</th>
+                <th>Number of Guests</th>
+                <th>Reserved By</th>
+                <th>Reservation Status</th>
+                <th>Update</th>
+            </tr>
+        </table>
+    </div>
 <script src="admin.js"></script>
 </body>
 </html>
