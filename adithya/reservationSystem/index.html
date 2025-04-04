@@ -39,7 +39,7 @@
         const response = await fetch("https://adithyavarma-xyz.onrender.com/reserve", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, phone, dateOfReservation, numberOfPeople, reservedBy })
+            body: JSON.stringify({ name, phone, date_of_reservation, number_of_people, reserved_by })
         });
 
         const result = await response.json();
