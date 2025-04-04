@@ -40,7 +40,7 @@ async function updateReservation(id) {
     const newStatus = document.getElementById(`status-${id}`).value;
     const updateButton = document.getElementById(`update-btn-${id}`);
 
-    updateButton.textContent = "Updating...";
+//    updateButton.textContent = "Updating...";
     updateButton.disabled = true;
 
     try{
