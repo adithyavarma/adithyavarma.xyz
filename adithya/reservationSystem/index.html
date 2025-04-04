@@ -18,7 +18,7 @@
         <label>Customer Phone Number:</label>
         <input type="text" id="phone" required><br>
         <label>Date of Reservation:</label>
-        <input type="date" id="date" required><br>
+        <input type="datetime-local" id="dateTime" required><br>
         <label>Number of Guests:</label>
         <input type="number" id="guests" min="1" required><br>
         <label>Reserved By:</label>
@@ -32,7 +32,7 @@
 
         const name = document.getElementById("name").value;
         const phone = document.getElementById("phone").value;
-        const dateOfReservation = document.getElementById("date").value;
+        const dateOfReservation = new Date(document.getElementById("dateTIme").value).toISOString();
         const numberOfPeople = document.getElementById("guests").value;
         const reservedBy = document.getElementById("reservedBy").value;
 

@@ -21,7 +21,7 @@ async function fetchReservations() {
         row.innerHTML = `
             <td>${res.name}</td>
             <td>${res.phone}</td>
-            <td>${res.date_of_reservation.split("T")[0]}</td>
+            <td>${new Date(res.date_of_reservation).toLocaleString()}</td>
             <td>${res.number_of_people}</td>
             <td>${res.reservedBy}</td>
             <td>
