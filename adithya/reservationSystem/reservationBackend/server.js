@@ -30,7 +30,7 @@ app.post("/reserve", async (req, res) => {
         res.status(201).json({ message: "Reservation created!", data: result.rows[0] });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(400).json({ error: "Bad Request" });
     }
 });
 
