@@ -24,7 +24,7 @@ app.post("/reserve", async (req, res) => {
 
     try {
         const result = await pool.query(
-            "INSERT INTO reservations (name, phone, date_of_reservation, number_of_people, reserved_by, status) VALUES ($1, $2, $3, $4, $5, 'CONFIRMED') RETURNING *",
+            "INSERT INTO reservations (id,name, phone, date_of_reservation, number_of_people, reserved_by, status) VALUES (nextval('reservations_id_seq'),$1, $2, $3, $4, $5, 'CONFIRMED') RETURNING *",
             [name, phone, date_of_reservation, number_of_people, reserved_by,status]
         );
         res.status(201).json({ message: "Reservation created!", data: result.rows[0] });
