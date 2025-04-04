@@ -4,6 +4,8 @@ const cors = require("cors");
 const { Pool } = require("pg");
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 const port = process.env.PORT || 5000;
 
 // Middleware
@@ -22,8 +24,8 @@ app.post("/reserve", async (req, res) => {
 
     try {
         const result = await pool.query(
-            "INSERT INTO reservations (name, phone, date_of_reservation, number_of_people, reservedBy) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-            [name, phone, dateOfReservation, numberOfPeople, reservedBy]
+            "INSERT INTO reservations (name, phone, date_of_reservation, number_of_people, reservedBy, status) VALUES ($1, $2, $3, $4, $5, 'CONFIRMED') RETURNING *",
+            [name, phone, dateOfReservation, numberOfPeople, reservedBy, status]
         );
         res.status(201).json({ message: "Reservation created!", data: result.rows[0] });
     } catch (error) {
@@ -44,21 +46,24 @@ app.get("/reservations", async (req, res) => {
 });
 
 // 📌 Route to update reservation (Receptionist Access)
-app.put("/reservation/:id", async (req, res) => {
-    const { id } = req.params;
-    const { confirmed } = req.body;
+app.put("/update-reservation/:id/:status", async (req, res) => {
+    const { id, status } = req.params;
 
     try {
+        const allowedStatuses = ["PENDING", "CONFIRMED", "CANCELED"];
+        if(!allowedStatuses.includes(status.toLowerCase())) {
+            return res.status(400).json({ error: "Invalid status" });
+        }
         const result = await pool.query(
-            "UPDATE reservations SET confirmed = $1 WHERE id = $2 RETURNING *",
-            [confirmed, id]
+            "UPDATE reservations SET status = $1 WHERE id = $2 RETURNING *",
+            [status, id]
         );
 
         if (result.rowCount === 0) {
             return res.status(404).json({ error: "Reservation not found" });
         }
 
-        res.json({ message: "Reservation updated!", data: result.rows[0] });
+        res.json({ message: `Reservation updated to ${status}!`, data: result.rows[0] });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
@@ -67,5 +72,5 @@ app.put("/reservation/:id", async (req, res) => {
 
 // Start server
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on port ${port}`);
 });
