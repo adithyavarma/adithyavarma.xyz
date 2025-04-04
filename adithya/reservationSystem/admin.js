@@ -31,7 +31,7 @@ async function fetchReservations() {
                      <option value="canceled" ${res.status === "canceled" ? "selected" : ""}>Canceled</option>
                 </select>
             </td>
-            <td><a href="#" onclick = "updateReservation(${res.id})">Update</a></td>
+            <td><a href="#" onclick = "updateReservation(${res.id})" id="update-btn-${res.id}">Update</a></td>
         `;
     });
 }
@@ -58,26 +58,6 @@ async function updateReservation(id) {
              updateButton.disabled = false;
         }
 }
-//
-////add new reservations
-//document.getElementById("add-reservation-form").addEventListener("submit", async function(event) {
-//    event.preventDefault();
-//
-//    const name = document.getElementById("name").value;
-//    const phone = document.getElementById("phone").value;
-//    const dateOfReservation = document.getElementById("date").value;
-//    const numberOfPeople = document.getElementById("guests").value;
-//    const reservedBy = document.getElementById("reservedBy").value;
-//    const status = document.getElementById("status").value;
-//    const response = await fetch(`${apiUrl}/reserve`, {
-//        method: "POST",
-//        headers: { "Content-Type": "application/json" },
-//        body: JSON.stringify({ name, phone, dateOfReservation, numberOfPeople, reservedBy })
-//    });
-//
-//    const result = await response.json();
-//    alert(result.message);
-//    location.reload(); // Refresh list after adding
-//});
+
 
 fetchReservations();
