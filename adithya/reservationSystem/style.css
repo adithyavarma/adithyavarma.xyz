@@ -72,7 +72,7 @@ input[type="text"] {
 input[type="text"]:focus {
     border-color: #4CAF50;
 }
-input[type="date"] {
+input[type="dateTime-local"] {
     width: 85%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -82,7 +82,7 @@ input[type="date"] {
     transition: border-color 0.3s ease;
 }
 
-input[type="date"]:focus {
+input[type="dateTime-local"]:focus {
     border-color: #4CAF50;
 }
 
