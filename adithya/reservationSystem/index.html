@@ -32,9 +32,9 @@
 
         const name = document.getElementById("name").value;
         const phone = document.getElementById("phone").value;
-        const dateOfReservation = new Date(document.getElementById("dateTime").value).toISOString();
-        const numberOfPeople = document.getElementById("guests").value;
-        const reservedBy = document.getElementById("reservedBy").value;
+        const date_of_reservation = new Date(document.getElementById("dateTime").value).toISOString();
+        const number_of_people = document.getElementById("guests").value;
+        const reserved_by = document.getElementById("reservedBy").value;
 
         const response = await fetch("https://adithyavarma-xyz.onrender.com/reserve", {
             method: "POST",
