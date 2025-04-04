@@ -25,7 +25,7 @@ async function fetchReservations() {
             <td>${res.number_of_people}</td>
             <td>${res.reservedBy}</td>
             <td>
-                <select id="status-${res.id}" onchange="updateReservation(${res.id})">
+                <select id="status-${res.id}">
                      <option value="pending" ${res.status === "pending" ? "selected" : ""}>Pending</option>
                      <option value="confirmed" ${res.status === "confirmed" ? "selected" : ""}>Confirmed</option>
                      <option value="canceled" ${res.status === "canceled" ? "selected" : ""}>Canceled</option>
@@ -36,26 +36,27 @@ async function fetchReservations() {
     });
 }
 
-//update reservation status
-//async function updateReservation(id, status) {
-//    await fetch(`${apiUrl}/reservation/${id}`, {
-//        method: "PUT",
-//        headers: { "Content-Type": "application/json" },
-//        body: JSON.stringify({ confirmed: status === "true" })
-//    });
-//    alert("Reservation updated!");
-//}
-
 async function updateReservation(id) {
     const newStatus = document.getElementById(`status-${id}`).value;
-    const response = await fetch(`${apiUrl}/update-reservation/${id}/${newStatus}`, { method: "GET" });
+    const updateButton = document.getElementById(`update-btn-${id}`);
 
-    if (response.ok) {
-        alert("Reservation updated successfully!");
-        location.reload(); // Refresh the list after update
-    } else {
-        alert("Failed to update reservation.");
-    }
+    updateButton.textContent = "Updating...";
+    updateButton.disabled = true;
+
+    try{
+        const response = await fetch(`${apiUrl}/update-reservation/${id}/${newStatus}`, { method: "GET" });
+        if (response.ok) {
+            alert("Reservation updated successfully!");
+            location.reload(); // Refresh the list after update
+        } else {
+            alert("Failed to update reservation.");
+        }
+    }catch (error) {
+             alert("Error updating reservation: " + error.message);
+    } finally {
+             updateButton.textContent = "Update";
+             updateButton.disabled = false;
+        }
 }
 //
 ////add new reservations
