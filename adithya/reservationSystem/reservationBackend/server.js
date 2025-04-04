@@ -30,8 +30,8 @@ app.post("/reserve", async (req, res) => {
 
     try {
         const result = await pool.query(
-            "INSERT INTO reservations (name, phone, date_of_reservation, number_of_people, reservedBy, status) VALUES ($1, $2, $3, $4, $5, 'CONFIRMED') RETURNING *",
-            [name, phone, dateOfReservation, numberOfPeople, reservedBy, status]
+            "INSERT INTO reservations (name, phone, date_of_reservation, number_of_people, reservedBy) VALUES ($1, $2, $3, $4, $5, 'CONFIRMED') RETURNING *",
+            [name, phone, dateOfReservation, numberOfPeople, reservedBy]
         );
         res.status(201).json({ message: "Reservation created!", data: result.rows[0] });
     } catch (error) {
