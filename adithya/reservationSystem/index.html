@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make a Reservation</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Restaurant Reservation</h2>
-<form id="reservation-form">
-    <input type="text" id="name" placeholder="Your Name" required><br>
-    <input type="text" id="phone" placeholder="Phone Number" required><br>
-    <input type="date" id="date" required><br>
-    <input type="number" id="guests" placeholder="Number of Guests" min="1" required><br>
-    <input type="text" id="reservedBy" placeholder="Reserved By" required><br>
-    <button type="submit">Submit</button>
-</form>
-
+<div class="container">
+    <header class="header">
+        <h1>RESTAURANT RESERVATION SYSTEM</h1>
+        <h5>Customer View</h5>
+    </header>
+    <form class="form-container" id="reservation-form">
+        <label>Customer Name:</label>
+        <input type="text" id="name" required><br>
+        <label>Customer Phone Number:</label>
+        <input type="text" id="phone" required><br>
+        <label>Date of Reservation:</label>
+        <input type="date" id="date" required><br>
+        <label>Number of Guests:</label>
+        <input type="number" id="guests" min="1" required><br>
+        <label>Reserved By:</label>
+        <input type="text" id="reservedBy" placeholder="employee name" required><br>
+        <button type="submit">SUBMIT</button>
+    </form>
+</div>
 <script>
     document.getElementById("reservation-form").addEventListener("submit", async function(event) {
         event.preventDefault();
