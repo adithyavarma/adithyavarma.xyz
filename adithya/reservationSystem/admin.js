@@ -44,7 +44,7 @@ async function updateReservation(id) {
     updateButton.disabled = true;
 
     try{
-        const response = await fetch(`${apiUrl}/update-reservation/${id}/${newStatus}`, { method: "GET" });
+        const response = await fetch(`${apiUrl}/update-reservation/${id}/${newStatus}`, { method: "PUT" });
         if (response.ok) {
             alert("Reservation updated successfully!");
             location.reload(); // Refresh the list after update
