@@ -24,6 +24,7 @@ async function fetchReservations() {
             <td>${new Date(res.date_of_reservation).toLocaleString()}</td>
             <td>${res.number_of_people}</td>
             <td>${res.reserved_by}</td>
+            <td>${res.status}</td>
             <td>
                 <select id="status-${res.id}">
                      <option value="pending" ${res.status === "pending" ? "selected" : ""}>Pending</option>
