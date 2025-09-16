@@ -24,12 +24,11 @@ async function fetchReservations() {
             <td>${new Date(res.date_of_reservation).toLocaleString()}</td>
             <td>${res.number_of_people}</td>
             <td>${res.reserved_by}</td>
-            <td>${res.status}</td>
             <td>
                 <select id="status-${res.id}">
-                     <option value="pending" ${res.status === "pending" ? "selected" : ""}>Pending</option>
-                     <option value="confirmed" ${res.status === "confirmed" ? "selected" : ""}>Confirmed</option>
-                     <option value="canceled" ${res.status === "canceled" ? "selected" : ""}>Canceled</option>
+                     <option value="pending" ${res.status.trim().toLowerCase() === "pending" ? "selected" : ""}>Pending</option>
+                     <option value="confirmed" ${res.status.trim().toLowerCase() === "confirmed" ? "selected" : ""}>Confirmed</option>
+                     <option value="canceled" ${res.status.trim().toLowerCase() === "canceled" ? "selected" : ""}>Canceled</option>
                 </select>
             </td>
             <td><a href="#" onclick = "updateReservation(${res.id})" id="update-btn-${res.id}">Update</a></td>
